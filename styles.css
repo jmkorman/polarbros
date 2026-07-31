@@ -243,10 +243,6 @@ i { font-style: italic; }
   border-bottom: 1px solid var(--line);
   transition: padding-left 0.4s var(--ease), color 0.4s;
 }
-.index__row::before {
-  content: ''; position: absolute; inset: 0; background: var(--black);
-  transform: scaleY(0); transform-origin: bottom; transition: transform 0.45s var(--ease); z-index: 0;
-}
 .index__row > * { position: relative; z-index: 1; }
 .index__no { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.1em; color: var(--muted); transition: color 0.4s; align-self: start; padding-top: 6px; }
 .index__block { display: grid; gap: 10px; }
@@ -255,11 +251,6 @@ i { font-style: italic; }
 .index__tags { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); transition: color 0.4s; }
 
 .index__row:hover { padding-left: 26px; }
-.index__row:hover::before { transform: scaleY(1); }
-.index__row:hover .index__name { color: var(--cream); }
-.index__row:hover .index__no,
-.index__row:hover .index__desc,
-.index__row:hover .index__tags { color: var(--muted-d); }
 
 /* ---------- Flavors ---------- */
 .flavors { max-width: var(--maxw); margin: 0 auto; padding: clamp(80px, 10vw, 150px) var(--pad) clamp(48px, 6vw, 80px); }
