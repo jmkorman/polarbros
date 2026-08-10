@@ -25,8 +25,8 @@
       <nav class="nav__links" id="navLinks">
         <a href="#story">Story</a>
         <a href="#process">Process</a>
-        <a href="#flavors">Flavors</a>
         <a href="#offerings">Offerings</a>
+        <a href="map.html">Find Us</a>
         <a href="#chef">The Chef</a>
       </nav>
 
@@ -180,7 +180,6 @@
         <p class="flavor__desc">Blue vanilla loaded with cookies. A crowd favorite.</p>
       </li>
     </ul>
-    <p class="flavors__foot reveal">Menu rotates seasonally · custom flavors on request</p>
   </section>
 
   <!-- ===== OFFERINGS INDEX ===== -->
@@ -199,14 +198,20 @@
           <span class="index__tags">Pints &amp; tubs · Standing orders · Front Range delivery</span>
           <a href="mailto:jake@polarbros.com" class="index__cta">Contact</a>
         </div>
+        <div class="index__media">
+          <img src="images/offering-wholesale.jpg" alt="Polar Bros nitro ice cream pints ready for wholesale delivery" loading="lazy" decoding="async" />
+        </div>
       </li>
       <li class="index__row reveal">
         <span class="index__no">02</span>
         <div class="index__block">
           <h3 class="index__name">Private Events</h3>
           <p class="index__desc">A live nitro bar at your wedding, corporate party, or celebration. Scoops frozen to order in a cloud of fog, with a chef on-site and the whole show included.</p>
-          <span class="index__tags">Weddings · Corporate · Parties</span>
+          <span class="index__tags">Weddings · Corporate · Parties · from $10/guest</span>
           <a href="mailto:sales@polarbros.com" class="index__cta">Contact</a>
+        </div>
+        <div class="index__media">
+          <img src="images/offering-events.jpg" alt="A live Polar Bros nitro ice cream bar set up at a private event" loading="lazy" decoding="async" />
         </div>
       </li>
       <li class="index__row reveal">
@@ -217,6 +222,9 @@
           <span class="index__tags">Select retailers · Pickup · Seasonal drops</span>
           <a href="map.html" class="index__cta">See Map</a>
         </div>
+        <div class="index__media">
+          <img src="images/offering-retail.jpg" alt="Polar Bros pints on the shelf at a Colorado retail shop" loading="lazy" decoding="async" />
+        </div>
       </li>
       <li class="index__row reveal">
         <span class="index__no">04</span>
@@ -226,13 +234,16 @@
           <span class="index__tags">Brand collabs · Seasonal · One-offs</span>
           <a href="mailto:jake@polarbros.com" class="index__cta">Contact</a>
         </div>
+        <div class="index__media">
+          <img src="images/offering-custom.jpg" alt="A custom Polar Bros nitro ice cream flavor developed for a client" loading="lazy" decoding="async" />
+        </div>
       </li>
     </ul>
   </section>
 
   <!-- ===== EXPERIENCE BAND ===== -->
   <section class="band">
-    <img class="band__img" src="images/ice-cream-man.jpg" alt="Chef Chuck James freezing a batch of nitro ice cream in a cloud of fog inside the Polar Bros truck" width="2000" height="1333" loading="lazy" decoding="async" />
+    <img class="band__img" src="images/ice-cream-man.webp" alt="Chef Chuck James freezing a batch of nitro ice cream in a cloud of fog inside the Polar Bros truck" loading="lazy" decoding="async" />
     <div class="band__scrim"></div>
     <div class="band__fog" aria-hidden="true">
       <span class="bfog bfog--a"></span>
@@ -314,12 +325,16 @@
       </p>
       <ul class="contact__meta reveal">
         <li><span>Serving</span>Denver, Boulder &amp; the Front Range</li>
-        <li><span>Email</span><a href="mailto:sales@polarbros.com">sales@polarbros.com</a></li>
+        <li><span>Phone</span><a href="tel:+12064620791">206-462-0791</a></li>
+        <li><span>Email</span><a href="mailto:jake@polarbros.com">jake@polarbros.com</a></li>
         <li><span>Instagram</span><a href="https://instagram.com/polarbros.icecream" target="_blank" rel="noopener">@polarbros.icecream</a></li>
       </ul>
     </div>
 
-    <form class="form reveal" action="#" method="post" onsubmit="return false;">
+    <form class="form reveal" action="https://formsubmit.co/jake@polarbros.com" method="post">
+      <input type="hidden" name="_subject" value="New Polar Bros inquiry" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
       <div class="form__field">
         <input type="text" id="name" name="Name" placeholder=" " required />
         <label for="name">Name</label>
@@ -364,7 +379,8 @@
       <nav>
         <span>Connect</span>
         <a href="https://instagram.com/polarbros.icecream" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:sales@polarbros.com">sales@polarbros.com</a>
+        <a href="mailto:jake@polarbros.com">jake@polarbros.com</a>
+        <a href="tel:+12064620791">206-462-0791</a>
         <a href="#contact">Book us</a>
       </nav>
       <p class="footer__note">
@@ -377,6 +393,12 @@
       <span>Denver, Colorado</span>
     </div>
   </footer>
+
+  <!-- ===== STICKY MOBILE CTA ===== -->
+  <div class="mobar" aria-label="Quick contact">
+    <a href="tel:+12064620791" class="mobar__btn mobar__btn--ghost">Call</a>
+    <a href="mailto:jake@polarbros.com" class="mobar__btn mobar__btn--solid">Contact us</a>
+  </div>
 
   <script src="script.js"></script>
 </body>

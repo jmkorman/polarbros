@@ -41,3 +41,36 @@ document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
 // --- Year ---
 document.getElementById('year').textContent = new Date().getFullYear();
+
+// --- Stockist map (map.html only) ---
+const mapEl = document.getElementById('map');
+if (mapEl && window.L && Array.isArray(window.POLAR_STOCKISTS)) {
+  const map = L.map(mapEl, { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  const pin = L.divIcon({
+    className: 'pb-pin',
+    html: '<span></span>',
+    iconSize: [18, 18],
+    iconAnchor: [9, 9],
+  });
+
+  const bounds = [];
+  window.POLAR_STOCKISTS.forEach((s) => {
+    const q = encodeURIComponent(s.addr);
+    const marker = L.marker([s.lat, s.lng], { icon: pin, title: s.name }).addTo(map);
+    marker.bindPopup(
+      `<strong>${s.name}</strong><br>${s.addr}<br>` +
+        `<a href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Get directions</a>`
+    );
+    bounds.push([s.lat, s.lng]);
+  });
+
+  map.fitBounds(bounds, { padding: [40, 40] });
+  map.on('click', () => map.scrollWheelZoom.enable());
+  map.on('mouseout', () => map.scrollWheelZoom.disable());
+}

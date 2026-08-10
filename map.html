@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300..800&family=Roboto+Slab:wght@500;700;800;900&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
 
+  <!-- Leaflet (OpenStreetMap) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -25,8 +28,8 @@
       <nav class="nav__links" id="navLinks">
         <a href="index.html#story">Story</a>
         <a href="index.html#process">Process</a>
-        <a href="index.html#flavors">Flavors</a>
         <a href="index.html#offerings">Offerings</a>
+        <a href="map.html">Find Us</a>
         <a href="index.html#chef">The Chef</a>
       </nav>
 
@@ -55,101 +58,90 @@
 
   <!-- ===== STOCKISTS ===== -->
   <section class="stockists">
-    <!-- MAP:
-         Replace the placeholder below with a Google My Maps embed.
-         1. Build a map at google.com/mymaps and pin each stockist.
-         2. Share → "Embed on my site" → copy the <iframe> code.
-         3. Paste it in place of the .stockists__map-empty div, e.g.:
-         <div class="stockists__map">
-           <iframe src="https://www.google.com/maps/d/embed?mid=YOUR_MAP_ID" loading="lazy"></iframe>
-         </div>
-    -->
     <div class="stockists__map">
-      <div class="stockists__map-empty">Interactive map coming soon. See the full list of stockists below.</div>
+      <div id="map" role="application" aria-label="Map of Polar Bros stockists"></div>
     </div>
 
-    <!-- STORES: each links to a Google Maps search so guests can get directions.
-         When you have exact street addresses, swap "Get directions" for the address. -->
-    <ul class="stockists__grid">
+    <ul class="stockists__grid" id="stockistGrid">
       <li class="place reveal">
         <h2 class="place__name">Brutal Poodle</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Brutal+Poodle+Denver+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">1967 S Broadway, Denver, CO 80210<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=1967+S+Broadway+Denver+CO+80210" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Eats and Sweets</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Eats+and+Sweets+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">401 S Public Rd, Lafayette, CO 80026<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=401+S+Public+Rd+Lafayette+CO+80026" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Esters (Oneida)</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Esters+Oneida+Denver+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">2201 Oneida St, Denver, CO 80207<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=2201+Oneida+St+Denver+CO+80207" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Esters Gold Market Place, Wheat Ridge</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Esters+Gold+Market+Place+Wheat+Ridge+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">10151 W 26th Ave, Wheat Ridge, CO 80215<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=10151+W+26th+Ave+Wheat+Ridge+CO+80215" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Heinies Market</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Heinies+Market+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">11801 W 44th Ave, Wheat Ridge, CO 80033<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=11801+W+44th+Ave+Wheat+Ridge+CO+80033" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Hip Hop</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hip+Hop+Denver+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">4430 W 29th Ave, Denver, CO 80212<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=4430+W+29th+Ave+Denver+CO+80212" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Jenny's Malt Shop</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Jennys+Malt+Shop+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">923 16th St, Greeley, CO 80631<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=923+16th+St+Greeley+CO+80631" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Lakewood Country Club</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Lakewood+Country+Club+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">6800 W 10th Ave, Lakewood, CO 80214<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=6800+W+10th+Ave+Lakewood+CO+80214" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Lazy Butcher</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Lazy+Butcher+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">30790 Stagecoach Blvd #101, Evergreen, CO 80439<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=30790+Stagecoach+Blvd+Evergreen+CO+80439" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Leevers Locavore</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Leevers+Locavore+Denver+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">2630 W 38th Ave, Denver, CO 80211<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=2630+W+38th+Ave+Denver+CO+80211" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Lewis Sweet Shop</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Lewis+Sweet+Shop+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">1621 Coalton Rd, Superior, CO 80027<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=1621+Coalton+Rd+Superior+CO+80027" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Ositos Ice Cream</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Ositos+Ice+Cream+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">15450 E Hampden Ave, Aurora, CO 80013<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=15450+E+Hampden+Ave+Aurora+CO+80013" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Residence Inn Denver / Central Park</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Residence+Inn+Denver+Central+Park" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">4667 N Central Park Blvd, Denver, CO 80238<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=4667+N+Central+Park+Blvd+Denver+CO+80238" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">The Meat Shop on 38th</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=The+Meat+Shop+on+38th+Denver+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">7220 W 38th Ave, Wheat Ridge, CO 80033<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=7220+W+38th+Ave+Wheat+Ridge+CO+80033" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Spinellis Market</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Spinellis+Market+Denver+CO" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">4621 E 23rd Ave, Denver, CO 80207<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=4621+E+23rd+Ave+Denver+CO+80207" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Palombo Farms Market</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Palombo+Farms+Market+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">11500 Havana St, Henderson, CO 80640<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=11500+Havana+St+Henderson+CO+80640" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Double Tree, Quebec</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=DoubleTree+Denver+Quebec" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">3203 Quebec St, Denver, CO 80207<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=3203+Quebec+St+Denver+CO+80207" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Littleton Meats</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Littleton+Meats+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">3615 W Bowles Ave #1, Littleton, CO 80123<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=3615+W+Bowles+Ave+Littleton+CO+80123" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Nick's Garden Center</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Nicks+Garden+Center+Colorado" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">2001 S Chambers Rd, Aurora, CO 80014<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=2001+S+Chambers+Rd+Aurora+CO+80014" target="_blank" rel="noopener">Get directions</a></p>
       </li>
       <li class="place reveal">
         <h2 class="place__name">Hilton Garden Inn Denver Tech Center</h2>
-        <p class="place__addr"><a href="https://www.google.com/maps/search/?api=1&amp;query=Hilton+Garden+Inn+Denver+Tech+Center" target="_blank" rel="noopener">Get directions</a></p>
+        <p class="place__addr">7675 E Union Ave, Denver, CO 80237<br /><a href="https://www.google.com/maps/search/?api=1&amp;query=7675+E+Union+Ave+Denver+CO+80237" target="_blank" rel="noopener">Get directions</a></p>
       </li>
     </ul>
 
@@ -161,10 +153,6 @@
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <img class="footer__logo" src="images/EB_Faces_Logo.png" alt="The Polar Bros" width="120" height="120" loading="lazy" decoding="async" />
-    <a href="index.html#top" class="footer__mark">
-      <span class="footer__word">Polar Bros<sup>.</sup></span>
-      <span class="footer__tag">Nitro Ice Cream</span>
-    </a>
     <div class="footer__cols">
       <nav>
         <span>Menu</span>
@@ -176,7 +164,8 @@
       <nav>
         <span>Connect</span>
         <a href="https://instagram.com/polarbros.icecream" target="_blank" rel="noopener">Instagram</a>
-        <a href="mailto:sales@polarbros.com">sales@polarbros.com</a>
+        <a href="mailto:jake@polarbros.com">jake@polarbros.com</a>
+        <a href="tel:+12064620791">206-462-0791</a>
         <a href="index.html#contact">Book us</a>
       </nav>
       <p class="footer__note">
@@ -190,6 +179,32 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    // ---- Stockist markers (data mirrors the list above) ----
+    window.POLAR_STOCKISTS = [
+      { name: "Brutal Poodle", addr: "1967 S Broadway, Denver, CO 80210", lat: 39.6810, lng: -104.9878 },
+      { name: "Eats and Sweets", addr: "401 S Public Rd, Lafayette, CO 80026", lat: 39.9951, lng: -105.0907 },
+      { name: "Esters (Oneida)", addr: "2201 Oneida St, Denver, CO 80207", lat: 39.7500, lng: -104.9084 },
+      { name: "Esters Gold Market Place, Wheat Ridge", addr: "10151 W 26th Ave, Wheat Ridge, CO 80215", lat: 39.7548, lng: -105.1116 },
+      { name: "Heinies Market", addr: "11801 W 44th Ave, Wheat Ridge, CO 80033", lat: 39.7787, lng: -105.1315 },
+      { name: "Hip Hop", addr: "4430 W 29th Ave, Denver, CO 80212", lat: 39.7584, lng: -105.0447 },
+      { name: "Jenny's Malt Shop", addr: "923 16th St, Greeley, CO 80631", lat: 40.4140, lng: -104.6938 },
+      { name: "Lakewood Country Club", addr: "6800 W 10th Ave, Lakewood, CO 80214", lat: 39.7330, lng: -105.0721 },
+      { name: "Lazy Butcher", addr: "30790 Stagecoach Blvd #101, Evergreen, CO 80439", lat: 39.6524, lng: -105.3460 },
+      { name: "Leevers Locavore", addr: "2630 W 38th Ave, Denver, CO 80211", lat: 39.7689, lng: -105.0199 },
+      { name: "Lewis Sweet Shop", addr: "1621 Coalton Rd, Superior, CO 80027", lat: 39.9298, lng: -105.1497 },
+      { name: "Ositos Ice Cream", addr: "15450 E Hampden Ave, Aurora, CO 80013", lat: 39.6532, lng: -104.8080 },
+      { name: "Residence Inn Denver / Central Park", addr: "4667 N Central Park Blvd, Denver, CO 80238", lat: 39.7813, lng: -104.8829 },
+      { name: "The Meat Shop on 38th", addr: "7220 W 38th Ave, Wheat Ridge, CO 80033", lat: 39.7692, lng: -105.0775 },
+      { name: "Spinellis Market", addr: "4621 E 23rd Ave, Denver, CO 80207", lat: 39.7512, lng: -104.9333 },
+      { name: "Palombo Farms Market", addr: "11500 Havana St, Henderson, CO 80640", lat: 39.9100, lng: -104.8588 },
+      { name: "Double Tree, Quebec", addr: "3203 Quebec St, Denver, CO 80207", lat: 39.7630, lng: -104.9043 },
+      { name: "Littleton Meats", addr: "3615 W Bowles Ave #1, Littleton, CO 80123", lat: 39.6100, lng: -105.0349 },
+      { name: "Nick's Garden Center", addr: "2001 S Chambers Rd, Aurora, CO 80014", lat: 39.6794, lng: -104.8112 },
+      { name: "Hilton Garden Inn Denver Tech Center", addr: "7675 E Union Ave, Denver, CO 80237", lat: 39.6289, lng: -104.9010 }
+    ];
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
