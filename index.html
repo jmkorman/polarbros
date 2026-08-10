@@ -11,6 +11,34 @@
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300..800&family=Roboto+Slab:wght@500;700;800;900&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FoodEstablishment",
+    "name": "Polar Bros Nitro Ice Cream",
+    "description": "Chef-made nitro ice cream for Denver events, wholesale & retail. Small-batch, flash-frozen at -321° the moment you order.",
+    "url": "https://polarbros.com/",
+    "telephone": "+1-206-462-0791",
+    "email": "jake@polarbros.com",
+    "servesCuisine": "Ice Cream",
+    "priceRange": "$$",
+    "image": "https://polarbros.com/images/hero.jpg",
+    "areaServed": [
+      { "@type": "City", "name": "Denver" },
+      { "@type": "AdministrativeArea", "name": "Colorado Front Range" }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Denver",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.instagram.com/polarbros.icecream"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -65,9 +93,7 @@
       </h1>
       <div class="hero__row">
         <p class="hero__lead">
-          Super-premium nitro ice cream, frozen at &minus;321&deg; and made by a
-          chef. Booked for private events and stocked by cafés, shops &amp;
-          grocers across the Front Range.
+          Chef-made nitro ice cream for Denver events, wholesale &amp; retail.
         </p>
       </div>
       <div class="hero__meta">
@@ -196,7 +222,7 @@
           <h3 class="index__name">Wholesale</h3>
           <p class="index__desc">Stock your café, restaurant, grocer, or scoop shop with small-batch nitro pints. Chef-developed flavors, consistent batch to batch, on a delivery schedule that works for you across the Front Range.</p>
           <span class="index__tags">Pints &amp; tubs · Standing orders · Front Range delivery</span>
-          <a href="mailto:jake@polarbros.com" class="index__cta">Contact</a>
+          <a href="#contact" class="index__cta" data-interest="Wholesale">Contact</a>
         </div>
         <div class="index__media">
           <img src="images/offering-wholesale.jpg" alt="Polar Bros nitro ice cream pints ready for wholesale delivery" loading="lazy" decoding="async" />
@@ -208,7 +234,7 @@
           <h3 class="index__name">Private Events</h3>
           <p class="index__desc">A live nitro bar at your wedding, corporate party, or celebration. Scoops frozen to order in a cloud of fog, with a chef on-site and the whole show included.</p>
           <span class="index__tags">Weddings · Corporate · Parties · from $10/guest</span>
-          <a href="mailto:sales@polarbros.com" class="index__cta">Contact</a>
+          <a href="#contact" class="index__cta" data-interest="Private Event">Contact</a>
         </div>
         <div class="index__media">
           <img src="images/offering-events.jpg" alt="A live Polar Bros nitro ice cream bar set up at a private event" loading="lazy" decoding="async" />
@@ -232,7 +258,7 @@
           <h3 class="index__name">Custom Flavors</h3>
           <p class="index__desc">Nostalgic or wild, we develop signature flavors to match your brand, your wedding colors, or a seasonal menu, built for you and yours alone.</p>
           <span class="index__tags">Brand collabs · Seasonal · One-offs</span>
-          <a href="mailto:jake@polarbros.com" class="index__cta">Contact</a>
+          <a href="#contact" class="index__cta" data-interest="Custom Flavors">Contact</a>
         </div>
         <div class="index__media">
           <img src="images/offering-custom.jpg" alt="A custom Polar Bros nitro ice cream flavor developed for a client" loading="lazy" decoding="async" />
@@ -325,6 +351,7 @@
     <form class="form reveal" action="https://formsubmit.co/jake@polarbros.com" method="post">
       <input type="hidden" name="_subject" value="New Polar Bros inquiry" />
       <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://polarbros.com/thanks.html" />
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
       <div class="form__field">
         <input type="text" id="name" name="Name" placeholder=" " required />
@@ -349,6 +376,7 @@
         <label for="message">How can we help?</label>
       </div>
       <button type="submit" class="btn btn--light btn--full">Send it →</button>
+      <p class="form__note">We read every note and reply within one business day.</p>
     </form>
 
     <ul class="contact__meta reveal">

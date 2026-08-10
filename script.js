@@ -39,6 +39,17 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
+// --- Offering CTAs pre-select the contact form interest ---
+const interestSelect = document.getElementById('interest');
+document.querySelectorAll('.index__cta[data-interest]').forEach((cta) =>
+  cta.addEventListener('click', () => {
+    if (!interestSelect) return;
+    const want = cta.getAttribute('data-interest');
+    const match = [...interestSelect.options].find((o) => o.value === want || o.text === want);
+    if (match) interestSelect.value = match.value;
+  })
+);
+
 // --- Year ---
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
