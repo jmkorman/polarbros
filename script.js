@@ -40,7 +40,8 @@ const observer = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
 // --- Year ---
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // --- Stockist map (map.html only) ---
 const mapEl = document.getElementById('map');
