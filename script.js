@@ -15,13 +15,15 @@ window.addEventListener('resize', setNav);
 const toggle = document.getElementById('navToggle');
 const links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => {
-  toggle.classList.toggle('active');
+  const open = toggle.classList.toggle('active');
   links.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
 });
 links.querySelectorAll('a').forEach((a) =>
   a.addEventListener('click', () => {
     toggle.classList.remove('active');
     links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
   })
 );
 
