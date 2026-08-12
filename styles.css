@@ -319,6 +319,15 @@ section[id] { scroll-margin-top: 84px; }
 @media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } .flavors__list { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .gallery__grid { grid-template-columns: 1fr; gap: 14px; } }
 
+/* ---------- Trusted by ---------- */
+.trusted { border-top: 1px solid var(--line); }
+.trusted__inner { max-width: var(--maxw); margin: 0 auto; padding: clamp(40px, 5vw, 64px) var(--pad); text-align: center; }
+.trusted .kicker { display: block; margin: 0 auto clamp(24px, 3vw, 36px); }
+.trusted__logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(28px, 5vw, 64px); }
+.trusted__logos img { height: clamp(40px, 5.5vw, 58px); width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: filter 0.4s var(--ease), opacity 0.4s var(--ease); }
+.trusted__logos li:hover img { filter: grayscale(0); opacity: 1; }
+@media (max-width: 560px) { .trusted__logos { gap: 28px 36px; } }
+
 /* ---------- Experience band ---------- */
 .band { position: relative; height: clamp(420px, 70vh, 680px); overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--black); }
 .band__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
