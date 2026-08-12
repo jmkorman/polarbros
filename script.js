@@ -68,9 +68,9 @@ document.querySelectorAll('.index__cta[data-interest]').forEach((cta) =>
   sprite.width = sprite.height = S;
   const sctx = sprite.getContext('2d');
   const g = sctx.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
-  g.addColorStop(0, 'rgba(240,245,251,0.42)');
-  g.addColorStop(0.35, 'rgba(224,234,247,0.20)');
-  g.addColorStop(0.7, 'rgba(210,226,244,0.05)');
+  g.addColorStop(0, 'rgba(240,245,251,0.72)');
+  g.addColorStop(0.35, 'rgba(224,234,247,0.38)');
+  g.addColorStop(0.7, 'rgba(210,226,244,0.10)');
   g.addColorStop(1, 'rgba(210,226,244,0)');
   sctx.fillStyle = g;
   sctx.fillRect(0, 0, S, S);
@@ -110,7 +110,7 @@ document.querySelectorAll('.index__cta[data-interest]').forEach((cta) =>
     ctx.clearRect(0, 0, W, H);
     // Scroll pours the fog downward and thickens it as the hero exits.
     const downBias = scrollP * 60;
-    const thick = 0.55 + scrollP * 0.6;
+    const thick = 0.95 + scrollP * 0.5;
     ctx.globalCompositeOperation = 'lighter';
     for (const p of puffs) {
       p.sway += p.swaySpd;
