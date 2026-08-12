@@ -144,6 +144,96 @@ document.querySelectorAll('.index__cta[data-interest]').forEach((cta) =>
   ).observe(hero);
 })();
 
+// --- Site-wide dynamic fog (fixed overlay, reacts to scroll velocity) ---
+(() => {
+  const canvas = document.getElementById('fogGlobal');
+  if (!canvas) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const ctx = canvas.getContext('2d');
+  let dpr = 1, W = 0, H = 0, puffs = [], rafId = 0, running = false;
+  let lastY = window.scrollY, targetFlow = 0, flow = 0;
+
+  const sprite = document.createElement('canvas');
+  const S = 256;
+  sprite.width = sprite.height = S;
+  const sctx = sprite.getContext('2d');
+  const grad = sctx.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
+  grad.addColorStop(0, 'rgba(238,244,251,0.6)');
+  grad.addColorStop(0.4, 'rgba(220,231,246,0.28)');
+  grad.addColorStop(0.75, 'rgba(208,224,244,0.07)');
+  grad.addColorStop(1, 'rgba(208,224,244,0)');
+  sctx.fillStyle = grad;
+  sctx.fillRect(0, 0, S, S);
+
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  function makePuff() {
+    const r = rand(W * 0.16, W * 0.4);
+    return {
+      x: rand(-0.1, 1.1) * W,
+      y: rand(-0.1, 1.1) * H,
+      r,
+      vx: rand(-5, 5),
+      vy: rand(-8, -2),
+      sway: rand(0, Math.PI * 2),
+      swaySpd: rand(0.005, 0.015),
+      alpha: rand(0.45, 1),
+    };
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = W < 700 ? 8 : W < 1200 ? 12 : 16;
+    puffs = Array.from({ length: count }, makePuff);
+  }
+
+  let last = 0;
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min((t - last) || 16, 40) / 1000;
+    last = t;
+    // Ease the scroll-driven flow, and let it decay back to calm.
+    flow += (targetFlow - flow) * 0.08;
+    targetFlow *= 0.92;
+    const activity = Math.min(1, Math.abs(flow) / 22);
+    ctx.clearRect(0, 0, W, H);
+    for (const p of puffs) {
+      p.sway += p.swaySpd;
+      p.x += (p.vx + Math.sin(p.sway) * 6) * dt;
+      p.y += (p.vy - flow) * dt;
+      const m = p.r + 40;
+      if (p.y + p.r < -m) { p.y = H + p.r; p.x = rand(-0.1, 1.1) * W; }
+      else if (p.y - p.r > H + m) { p.y = -p.r; p.x = rand(-0.1, 1.1) * W; }
+      if (p.x + p.r < -m) p.x = W + p.r;
+      else if (p.x - p.r > W + m) p.x = -p.r;
+      ctx.globalAlpha = p.alpha * (0.16 + activity * 0.22);
+      ctx.drawImage(sprite, p.x - p.r, p.y - p.r, p.r * 2, p.r * 2);
+    }
+    ctx.globalAlpha = 1;
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function start() { if (!running) { running = true; last = 0; rafId = requestAnimationFrame(frame); } }
+  function stop() { running = false; cancelAnimationFrame(rafId); }
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    targetFlow = Math.max(-40, Math.min(40, targetFlow + (y - lastY) * 0.6));
+    lastY = y;
+  }, { passive: true });
+  window.addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+  resize();
+  start();
+})();
+
 // --- Year ---
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
