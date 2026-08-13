@@ -48,9 +48,45 @@ document.querySelectorAll('.index__cta[data-interest]').forEach((cta) =>
     if (!interestSelect) return;
     const want = cta.getAttribute('data-interest');
     const match = [...interestSelect.options].find((o) => o.value === want || o.text === want);
-    if (match) interestSelect.value = match.value;
+    if (match) {
+      interestSelect.value = match.value;
+      interestSelect.dispatchEvent(new Event('change'));
+    }
   })
 );
+
+// --- Contact form: reveal fields for the selected interest ---
+(() => {
+  const form = document.querySelector('.form');
+  const select = document.getElementById('interest');
+  if (!form || !select) return;
+  const groups = form.querySelectorAll('.form__group');
+  const subject = form.querySelector('input[name="_subject"]');
+  const subjects = {
+    'Wholesale': 'New wholesale inquiry',
+    'Private Event': 'New private event inquiry',
+    'Retail / Pints': 'New retail / pints inquiry',
+    'Custom Flavors': 'New custom flavors inquiry',
+    'Just saying hi': 'New note from the site',
+  };
+
+  const update = () => {
+    const val = select.value;
+    groups.forEach((g) => {
+      const active = g.dataset.interest === val;
+      g.hidden = !active;
+      // Disabled fields are excluded from both validation and the email payload.
+      g.querySelectorAll('input, select, textarea').forEach((f) => {
+        f.disabled = !active;
+        f.required = active && f.hasAttribute('data-required');
+      });
+    });
+    if (subject) subject.value = subjects[val] || 'New Polar Bros inquiry';
+  };
+
+  select.addEventListener('change', update);
+  update();
+})();
 
 // --- Hero particle fog (canvas), reacts to scroll ---
 (() => {

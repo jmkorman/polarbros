@@ -412,6 +412,116 @@
           <option>Just saying hi</option>
         </select>
       </div>
+
+      <!-- Private Events -->
+      <div class="form__group" data-interest="Private Event" hidden>
+        <div class="form__field form__field--select">
+          <label class="form__label--static" for="ev-type">Event type</label>
+          <select id="ev-type" name="Event type" data-required>
+            <option value="" selected disabled>Select one</option>
+            <option>Wedding</option>
+            <option>Corporate</option>
+            <option>Birthday</option>
+            <option>Graduation</option>
+            <option>Anniversary</option>
+            <option>Holiday party</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="ev-date">Event date</label>
+          <input type="date" id="ev-date" name="Event date" data-required />
+        </div>
+        <label class="form__check">
+          <input type="checkbox" name="Date flexible" value="Yes" />
+          <span>My date is flexible</span>
+        </label>
+        <div class="form__field">
+          <label class="form__label--static" for="ev-guests">Estimated guest count</label>
+          <input type="number" id="ev-guests" name="Guest count" min="1" inputmode="numeric" placeholder="e.g. 120" data-required />
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="ev-venue">Venue / location</label>
+          <input type="text" id="ev-venue" name="Venue / location" placeholder="Venue name or city" data-required />
+        </div>
+        <div class="form__field form__field--select">
+          <label class="form__label--static" for="ev-inout">Indoor or outdoor</label>
+          <select id="ev-inout" name="Indoor or outdoor" data-required>
+            <option value="" selected disabled>Select one</option>
+            <option>Indoor</option>
+            <option>Outdoor</option>
+            <option>Both / not sure</option>
+          </select>
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="ev-window">Service window <span class="form__opt">(optional)</span></label>
+          <input type="text" id="ev-window" name="Service window" placeholder="e.g. 5–8pm, about 3 hours" />
+        </div>
+      </div>
+
+      <!-- Wholesale -->
+      <div class="form__group" data-interest="Wholesale" hidden>
+        <div class="form__field">
+          <label class="form__label--static" for="wh-biz">Business name</label>
+          <input type="text" id="wh-biz" name="Business name" autocomplete="organization" data-required />
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="wh-type">Business type</label>
+          <input type="text" id="wh-type" name="Business type" placeholder="Café, restaurant, grocer, scoop shop…" data-required />
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="wh-loc">Location / city</label>
+          <input type="text" id="wh-loc" name="Location / city" data-required />
+        </div>
+      </div>
+
+      <!-- Retail / Pints -->
+      <div class="form__group" data-interest="Retail / Pints" hidden>
+        <div class="form__field form__field--select">
+          <label class="form__label--static" for="rp-need">What do you need?</label>
+          <select id="rp-need" name="What do you need" data-required>
+            <option value="" selected disabled>Select one</option>
+            <option>Find a shop near me</option>
+            <option>Order pints for pickup</option>
+            <option>Bulk / party order</option>
+          </select>
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="rp-qty">Quantity (pints) <span class="form__opt">(optional)</span></label>
+          <input type="number" id="rp-qty" name="Quantity (pints)" min="1" inputmode="numeric" />
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="rp-date">Pickup date <span class="form__opt">(optional)</span></label>
+          <input type="date" id="rp-date" name="Pickup date" />
+        </div>
+      </div>
+
+      <!-- Custom Flavors -->
+      <div class="form__group" data-interest="Custom Flavors" hidden>
+        <div class="form__field form__field--select">
+          <label class="form__label--static" for="cf-purpose">Purpose</label>
+          <select id="cf-purpose" name="Purpose" data-required>
+            <option value="" selected disabled>Select one</option>
+            <option>Brand collab</option>
+            <option>Wedding colors</option>
+            <option>Seasonal menu</option>
+            <option>One-off</option>
+          </select>
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="cf-ideas">Flavor ideas / inspiration</label>
+          <textarea id="cf-ideas" name="Flavor ideas" rows="3" data-required></textarea>
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="cf-qty">Quantity needed <span class="form__opt">(optional)</span></label>
+          <input type="text" id="cf-qty" name="Quantity needed" placeholder="e.g. 40 pints, or a full event bar" />
+        </div>
+        <div class="form__field">
+          <label class="form__label--static" for="cf-date">Needed by <span class="form__opt">(optional)</span></label>
+          <input type="date" id="cf-date" name="Needed by" />
+        </div>
+      </div>
+
       <div class="form__field">
         <textarea id="message" name="Message" rows="3" placeholder=" "></textarea>
         <label for="message">How can we help?</label>
