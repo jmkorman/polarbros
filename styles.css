@@ -195,7 +195,7 @@ section[id] { scroll-margin-top: 84px; }
 .hero__foot,
 .story > .kicker, .story__statement, .story__grid,
 .process__body,
-.flavors__head, .flavors__list,
+.flavors__head, .flavors__list, .flavors__foot,
 .offerings__head, .index__row,
 .band__quote,
 .chef__text,
@@ -343,12 +343,30 @@ section[id] { scroll-margin-top: 84px; }
 .flavors__title { font-family: var(--serif); font-weight: 600; font-size: clamp(1.85rem, 3.8vw, 3.2rem); line-height: 1.04; letter-spacing: -0.005em; margin-bottom: 24px; }
 .flavors__title i { font-weight: 500; }
 .flavors__lead { color: var(--muted); font-size: 1.05rem; max-width: 52ch; }
-.flavors__list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(30px, 5vw, 80px); border-top: 1px solid var(--line); }
-.flavor { display: grid; grid-template-columns: auto 1fr; column-gap: 20px; align-items: baseline; padding: clamp(22px, 2.4vw, 30px) 4px; border-bottom: 1px solid var(--line); }
-.flavor__no { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
-.flavor__name { font-family: var(--serif); font-weight: 600; font-size: clamp(1.3rem, 2.2vw, 1.85rem); line-height: 1.06; letter-spacing: 0; }
-.flavor__desc { grid-column: 2; color: var(--muted); font-size: 0.96rem; margin-top: 6px; max-width: 40ch; }
-.flavors__foot { margin-top: clamp(30px, 4vw, 50px); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.flavors__list { list-style: none; border-top: 1px solid var(--line); }
+.flavor {
+  display: grid; grid-template-columns: auto minmax(200px, 0.9fr) minmax(0, 1.4fr);
+  column-gap: clamp(20px, 3vw, 52px); align-items: baseline;
+  padding: clamp(24px, 3vw, 42px) clamp(8px, 1.4vw, 18px);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.4s var(--ease), padding-left 0.4s var(--ease);
+}
+.flavor:hover { background: var(--cream-2); padding-left: clamp(16px, 2vw, 26px); }
+.flavor__no { font-family: var(--serif); font-style: italic; font-size: clamp(1.05rem, 1.6vw, 1.45rem); line-height: 1; color: var(--muted); transition: color 0.4s var(--ease); }
+.flavor:hover .flavor__no { color: var(--ink); }
+.flavor__name { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 2.8vw, 2.4rem); line-height: 1.02; letter-spacing: -0.005em; }
+.flavor__desc { color: var(--muted); font-size: clamp(0.98rem, 1.1vw, 1.08rem); line-height: 1.5; }
+.flavors__foot {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px;
+  padding: clamp(26px, 3vw, 40px) clamp(8px, 1.4vw, 18px) 0;
+}
+.flavors__note { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.flavors__cta {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 12px 24px; border: 1px solid var(--line); color: var(--ink);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s;
+}
+.flavors__cta:hover { background: var(--black); color: var(--cream); border-color: var(--black); }
 
 /* ---------- Gallery ---------- */
 .gallery { max-width: var(--maxw); margin: 0 auto; padding: clamp(44px, 5vw, 72px) var(--pad) clamp(60px, 7vw, 108px); }
@@ -359,7 +377,8 @@ section[id] { scroll-margin-top: 84px; }
 .gallery__item { position: relative; margin: 0; overflow: hidden; background: var(--cream-2); aspect-ratio: 4 / 5; }
 .gallery__item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.1); transition: transform 0.6s var(--ease), filter 0.6s; }
 .gallery__item:hover img { transform: scale(1.04); filter: none; }
-@media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } .flavors__list { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) { .flavor { grid-template-columns: auto 1fr; } .flavor__desc { grid-column: 2; margin-top: 8px; } }
 @media (max-width: 560px) { .gallery__grid { grid-template-columns: 1fr; gap: 14px; } }
 
 /* ---------- Trusted by ---------- */
