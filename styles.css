@@ -342,7 +342,7 @@ section[id] { scroll-margin-top: 84px; }
 .flavors__head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: clamp(18px, 4vw, 60px); margin-bottom: clamp(40px, 6vw, 70px); }
 .flavors__title { font-family: var(--serif); font-weight: 600; font-size: clamp(1.85rem, 3.8vw, 3.2rem); line-height: 1.04; letter-spacing: -0.005em; }
 .flavors__title i { font-weight: 500; }
-.flavors__lead { color: var(--muted); font-size: 1.05rem; max-width: 42ch; text-align: right; }
+.flavors__lead { font-family: var(--serif); font-weight: 500; font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.28; color: var(--ink); max-width: 22ch; text-align: right; }
 .flavors__list { list-style: none; border-top: 1px solid var(--line); }
 .flavor {
   display: grid; grid-template-columns: auto minmax(200px, 0.9fr) minmax(0, 1.4fr);
