@@ -361,6 +361,8 @@ section[id] { scroll-margin-top: 84px; }
 .label__tag { display: block; font-size: 0.52rem; font-weight: 600; letter-spacing: 0.42em; text-transform: uppercase; margin-top: 3px; }
 .label__name { font-family: var(--wordmark); font-weight: 800; font-size: 1.6rem; line-height: 1.05; margin: 14px 0 6px; }
 .label__desc { font-family: 'Courier New', Courier, monospace; font-size: 0.78rem; line-height: 1.5; color: #3a362c; max-width: 30ch; margin: 0 auto; }
+.label__diet { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: auto; padding-top: 14px; }
+.label__diet-tag { font-family: var(--sans); font-size: 0.56rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #c0261b; border: 1px solid #c0261b; border-radius: 999px; padding: 3px 9px; }
 
 /* ---------- Gallery ---------- */
 .gallery { max-width: var(--maxw); margin: 0 auto; padding: clamp(44px, 5vw, 72px) var(--pad) clamp(60px, 7vw, 108px); }
