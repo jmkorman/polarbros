@@ -569,7 +569,7 @@ section[id] { scroll-margin-top: 84px; }
 .mobar { display: none; }
 @media (max-width: 640px) {
   .mobar {
-    display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px;
+    display: grid; grid-template-columns: 1fr; gap: 10px;
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
     padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
     background: rgba(14, 13, 11, 0.92);
