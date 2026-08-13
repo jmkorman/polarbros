@@ -195,7 +195,7 @@ section[id] { scroll-margin-top: 84px; }
 .hero__foot,
 .story > .kicker, .story__statement, .story__grid,
 .process__body,
-.flavors__head, .flavors__list,
+.flavors__head, .labels,
 .offerings__head, .index__row,
 .band__quote,
 .chef__text,
@@ -342,17 +342,25 @@ section[id] { scroll-margin-top: 84px; }
 .flavors__head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: clamp(18px, 4vw, 60px); margin-bottom: clamp(40px, 6vw, 70px); }
 .flavors__title { font-family: var(--serif); font-weight: 600; font-size: clamp(1.85rem, 3.8vw, 3.2rem); line-height: 1.04; letter-spacing: -0.005em; }
 .flavors__title i { font-weight: 500; }
-.flavors__lead { font-family: var(--serif); font-weight: 500; font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.28; color: var(--ink); max-width: 22ch; text-align: right; }
-.flavors__list { list-style: none; border-top: 1px solid var(--line); }
-.flavor {
-  display: grid; grid-template-columns: auto minmax(200px, 0.9fr) minmax(0, 1.4fr);
-  column-gap: clamp(20px, 3vw, 52px); align-items: baseline;
-  padding: clamp(24px, 3vw, 42px) clamp(8px, 1.4vw, 18px);
-  border-bottom: 1px solid var(--line);
+.flavors__head--center { display: block; text-align: center; }
+.flavors__sub { font-family: var(--serif); font-weight: 500; font-size: clamp(1.1rem, 1.6vw, 1.35rem); color: var(--muted); margin-top: 18px; }
+.labels { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.label-card {
+  background: #b9925f;
+  background-image: linear-gradient(90deg, rgba(120,85,45,0.25), rgba(255,240,210,0.22) 50%, rgba(120,85,45,0.25));
+  padding: 34px 26px; display: flex; align-items: center;
+  transition: transform 0.4s var(--ease);
 }
-.flavor__no { font-family: var(--serif); font-style: italic; font-size: clamp(1.05rem, 1.6vw, 1.45rem); line-height: 1; color: var(--muted); }
-.flavor__name { font-family: var(--serif); font-weight: 600; font-size: clamp(1.5rem, 2.8vw, 2.4rem); line-height: 1.02; letter-spacing: -0.005em; }
-.flavor__desc { color: var(--muted); font-size: clamp(0.98rem, 1.1vw, 1.08rem); line-height: 1.5; }
+.label-card:nth-child(3n+1) { transform: rotate(-1.2deg); }
+.label-card:nth-child(3n+2) { transform: rotate(0.8deg); }
+.label-card:nth-child(3n)   { transform: rotate(-0.5deg); }
+.label-card:hover { transform: rotate(0) translateY(-4px); }
+.label { background: #fdfcf9; width: 100%; padding: 26px 20px 22px; text-align: center; box-shadow: 0 1px 4px rgba(60,40,15,0.25); }
+.label__logo { width: 84px; margin: 0 auto 8px; }
+.label__brand { display: block; font-family: var(--wordmark); font-weight: 900; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.label__tag { display: block; font-size: 0.52rem; font-weight: 600; letter-spacing: 0.42em; text-transform: uppercase; margin-top: 3px; }
+.label__name { font-family: var(--wordmark); font-weight: 800; font-size: 1.6rem; line-height: 1.05; margin: 14px 0 6px; }
+.label__desc { font-family: 'Courier New', Courier, monospace; font-size: 0.78rem; line-height: 1.5; color: #3a362c; max-width: 30ch; margin: 0 auto; }
 
 /* ---------- Gallery ---------- */
 .gallery { max-width: var(--maxw); margin: 0 auto; padding: clamp(44px, 5vw, 72px) var(--pad) clamp(60px, 7vw, 108px); }
@@ -363,9 +371,8 @@ section[id] { scroll-margin-top: 84px; }
 .gallery__item { position: relative; margin: 0; overflow: hidden; background: var(--cream-2); aspect-ratio: 4 / 5; }
 .gallery__item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.1); transition: transform 0.6s var(--ease), filter 0.6s; }
 .gallery__item:hover img { transform: scale(1.04); filter: none; }
-@media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 720px) { .flavors__lead { text-align: left; max-width: 52ch; } .flavor { grid-template-columns: auto 1fr; } .flavor__desc { grid-column: 2; margin-top: 8px; } }
-@media (max-width: 560px) { .gallery__grid { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 900px) { .gallery__grid { grid-template-columns: repeat(2, 1fr); } .labels { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .gallery__grid { grid-template-columns: 1fr; gap: 14px; } .labels { grid-template-columns: 1fr; } }
 
 /* ---------- Trusted by ---------- */
 .trusted { border-top: 1px solid var(--line); }
