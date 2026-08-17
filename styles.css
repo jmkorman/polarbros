@@ -265,7 +265,7 @@ section[id] { scroll-margin-top: 84px; }
 .story > .kicker, .story__statement, .story__grid { position: relative; z-index: 1; }
 .story__statement {
   font-family: var(--serif); font-weight: 600;
-  font-size: clamp(1.9rem, 5vw, 3.8rem); line-height: 1.04; letter-spacing: -0.005em;
+  font-size: clamp(1.9rem, 5vw, 3.8rem); line-height: 1.1; letter-spacing: -0.005em;
   margin-bottom: clamp(36px, 5vw, 68px);
 }
 .story__statement i { font-weight: 500; }
