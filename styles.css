@@ -247,7 +247,7 @@ section[id] { scroll-margin-top: 84px; }
 .hero__meta .hero__scroll { margin-left: auto; opacity: 0.7; }
 
 /* ---------- Story ---------- */
-.story { position: relative; overflow: hidden; max-width: var(--maxw); margin: 0 auto; padding: clamp(64px, 8vw, 120px) var(--pad); }
+.story { position: relative; max-width: var(--maxw); margin: 0 auto; padding: clamp(64px, 8vw, 120px) var(--pad); }
 .story__bg {
   position: absolute; inset: 0; z-index: 0; overflow: hidden;
   background: url('images/story-idea.jpg') center / cover no-repeat;
@@ -574,6 +574,7 @@ section[id] { scroll-margin-top: 84px; }
   .hero__meta { flex-wrap: wrap; gap: 16px 22px; }
   .hero__meta .hero__scroll { display: none; }
   .footer__cols { grid-template-columns: 1fr; }
+  .labels .label-card:nth-child(n+7) { display: none; }
 }
 
 /* ---------- Sticky mobile CTA bar ---------- */
