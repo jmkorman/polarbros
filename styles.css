@@ -363,7 +363,7 @@ section[id] { scroll-margin-top: 84px; }
 .label-card:nth-child(3n)   { transform: rotate(-0.5deg); }
 .label-card:hover { transform: rotate(0) translateY(-4px); }
 .label { background: #fdfcf9; width: 100%; padding: 26px 20px 22px; text-align: center; box-shadow: 0 1px 4px rgba(60,40,15,0.25); display: flex; flex-direction: column; align-items: center; }
-.label__logo { width: 84px; margin: 0 auto 8px; }
+.label__logo { width: 84px; height: auto; margin: 0 auto 8px; }
 .label__brand { display: block; font-family: var(--wordmark); font-weight: 900; font-size: 1.05rem; letter-spacing: 0.06em; text-transform: uppercase; }
 .label__tag { display: block; font-size: 0.52rem; font-weight: 600; letter-spacing: 0.42em; text-transform: uppercase; margin-top: 3px; }
 .label__name { font-family: var(--wordmark); font-weight: 800; font-size: 1.6rem; line-height: 1.05; margin: 14px 0 6px; }
