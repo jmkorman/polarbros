@@ -47,7 +47,7 @@ body {
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 i { font-style: italic; }
 /* keep anchored sections clear of the fixed nav bar */
 section[id] { scroll-margin-top: 84px; }
