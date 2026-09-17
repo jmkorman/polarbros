@@ -139,6 +139,14 @@ section[id] { scroll-margin-top: 84px; }
 .nav.scrolled .nav__buy { background: var(--black); color: var(--cream); }
 .nav.scrolled .nav__book:hover,
 .nav.scrolled .nav__buy:hover { background: var(--near); }
+/* Primary CTA — consumer pints shop. Red reads as primary in both nav states. */
+.nav__shop {
+  font-family: var(--sans); font-size: 0.76rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 11px 20px; background: #d21f16; color: var(--cream);
+  transition: background 0.35s var(--ease), transform 0.25s var(--ease);
+}
+.nav__shop:hover { transform: translateY(-1px); background: #b81b13; }
 
 .nav__toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px; }
 .nav__toggle span { width: 26px; height: 1.5px; background: currentColor; transition: 0.3s var(--ease); }
@@ -343,6 +351,10 @@ section[id] { scroll-margin-top: 84px; }
   transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s;
 }
 .index__cta:hover { background: var(--black); color: var(--cream); border-color: var(--black); }
+.index__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.index__ctas .index__cta { margin-top: 0; }
+.index__cta--shop { background: #d21f16; color: var(--cream); border-color: #d21f16; }
+.index__cta--shop:hover { background: #b81b13; color: var(--cream); border-color: #b81b13; }
 
 /* ---------- Flavors ---------- */
 .flavors { max-width: var(--maxw); margin: 0 auto; padding: clamp(60px, 7vw, 108px) var(--pad) clamp(40px, 5vw, 64px); }
@@ -566,7 +578,8 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 @media (max-width: 640px) {
-  .nav__links, .nav__book { display: none; }
+  /* Keep the mobile nav uncluttered: show only the primary Shop Pints button. */
+  .nav__links, .nav__book, .nav__buy { display: none; }
   .nav__links {
     position: fixed; inset: 0 0 0 auto; width: min(82vw, 340px); height: 100vh;
     background: var(--black); color: var(--cream);
