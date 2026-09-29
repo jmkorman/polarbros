@@ -572,8 +572,8 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 @media (max-width: 640px) {
-  /* Keep the mobile nav uncluttered: show only the primary Shop Pints button. */
-  .nav__links, .nav__book, .nav__buy { display: none; }
+  /* Keep the mobile nav uncluttered: show only the headline Book Us button. */
+  .nav__links, .nav__buy, .nav__shop { display: none; }
   .nav__links {
     position: fixed; inset: 0 0 0 auto; width: min(82vw, 340px); height: 100vh;
     background: var(--black); color: var(--cream);
