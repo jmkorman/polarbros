@@ -106,6 +106,26 @@
 
   <!-- ===== STOCKISTS ===== -->
   <section class="stockists">
+    <article class="window-card reveal" id="window" data-window>
+      <figure class="window-card__media">
+        <img src="images/lakewood-window.jpg" width="800" height="1064" alt="The Polar Bros nitro ice cream trailer window, with Chef Chuck serving a line of customers" loading="lazy" decoding="async" />
+      </figure>
+      <div class="window-card__body">
+        <span class="kicker">Our Window · Lakewood</span>
+        <h2 class="window-card__title">Grab a scoop on <i>weeknights.</i></h2>
+        <p class="window-card__lead">
+          The Polar Bros trailer is open right outside our kitchen. Scoops frozen
+          to order, pints to take home, and root beer floats.
+        </p>
+        <dl class="window-card__facts">
+          <div><dt>Where</dt><dd>790 Kipling St, Lakewood</dd></div>
+          <div><dt>When</dt><dd>Mon–Fri · 5–9 PM</dd></div>
+        </dl>
+        <p class="window-card__status"><span class="status-dot" aria-hidden="true"></span><span data-window-status>Mon–Fri · 5–9 PM</span></p>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=790+Kipling+St%2C+Lakewood%2C+CO+80215" target="_blank" rel="noopener" class="index__cta">Get directions</a>
+      </div>
+    </article>
+
     <div class="stockists__map">
       <div id="map" role="application" aria-label="Map of Polar Bros stockists"></div>
     </div>
@@ -226,6 +246,15 @@
       <span>Denver, Colorado</span>
     </div>
   </footer>
+
+  <!-- ===== STICKY MOBILE BAR: Lakewood window ===== -->
+  <div class="mobar" data-window aria-label="Lakewood ice cream window">
+    <a href="#window" class="mobar__window">
+      <span class="mobar__label"><span class="status-dot" aria-hidden="true"></span>Lakewood Window</span>
+      <span class="mobar__status" data-window-status>Mon–Fri · 5–9 PM</span>
+    </a>
+    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=790+Kipling+St%2C+Lakewood%2C+CO+80215" target="_blank" rel="noopener" class="mobar__btn mobar__btn--solid">Directions</a>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>

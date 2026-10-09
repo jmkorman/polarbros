@@ -55,6 +55,32 @@ document.querySelectorAll('.index__cta[data-interest]').forEach((cta) =>
   })
 );
 
+// --- Lakewood window: live open/closed status (Mon–Fri 5–9 PM, Mountain Time) ---
+(() => {
+  const wraps = document.querySelectorAll('[data-window]');
+  if (!wraps.length) return;
+  const OPEN = 17, CLOSE = 21; // 24h clock, America/Denver
+  const fmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Denver', weekday: 'short', hour: 'numeric', hourCycle: 'h23' });
+  const update = () => {
+    const parts = fmt.formatToParts(new Date());
+    const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.find((p) => p.type === 'weekday').value);
+    const hour = Number(parts.find((p) => p.type === 'hour').value);
+    const weekday = day >= 1 && day <= 5;
+    const open = weekday && hour >= OPEN && hour < CLOSE;
+    let text;
+    if (open) text = 'Open now · till 9 PM';
+    else if (weekday && hour < OPEN) text = 'Opens today at 5 PM';
+    else if (day >= 1 && day <= 4) text = 'Opens tomorrow at 5 PM';
+    else text = 'Opens Monday at 5 PM';
+    wraps.forEach((w) => {
+      w.classList.toggle('is-open', open);
+      w.querySelectorAll('[data-window-status]').forEach((el) => (el.textContent = text));
+    });
+  };
+  update();
+  setInterval(update, 60 * 1000);
+})();
+
 // --- Contact form: reveal fields for the selected interest ---
 (() => {
   const form = document.querySelector('.form');
@@ -303,6 +329,17 @@ if (mapEl && window.L && Array.isArray(window.POLAR_STOCKISTS)) {
     );
     bounds.push([s.lat, s.lng]);
   });
+
+  // Our own window (790 Kipling St, Lakewood — the kitchen): standout pin + label.
+  const WINDOW = [39.72907, -105.10959];
+  const homePin = L.divIcon({ className: 'pb-pin pb-pin--home', html: '<span></span><em>Polar Bros Window</em>', iconSize: [22, 22], iconAnchor: [11, 11] });
+  L.marker(WINDOW, { icon: homePin, title: 'Polar Bros Window', zIndexOffset: 1000 })
+    .addTo(map)
+    .bindPopup(
+      '<strong>Polar Bros Window</strong><br>790 Kipling St, Lakewood<br>Mon–Fri · 5–9 PM<br>' +
+        '<a href="https://www.google.com/maps/dir/?api=1&destination=790+Kipling+St%2C+Lakewood%2C+CO+80215" target="_blank" rel="noopener">Get directions</a>'
+    );
+  bounds.push(WINDOW);
 
   map.fitBounds(bounds, { padding: [40, 40] });
   map.on('click', () => map.scrollWheelZoom.enable());
