@@ -278,11 +278,13 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const mapEl = document.getElementById('map');
 if (mapEl && window.L && Array.isArray(window.POLAR_STOCKISTS)) {
   const map = L.map(mapEl, { scrollWheelZoom: false });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    maxZoom: 19,
+  // Esri Light Gray Canvas (base + labels). Carto's free basemaps started requiring an API key (Oct 2026).
+  const esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+  L.tileLayer(esri + 'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors',
+    maxZoom: 16,
   }).addTo(map);
+  L.tileLayer(esri + 'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16 }).addTo(map);
 
   const pin = L.divIcon({
     className: 'pb-pin',
