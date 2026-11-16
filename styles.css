@@ -129,7 +129,7 @@ section[id] { scroll-margin-top: 84px; }
 .nav__cta { display: flex; align-items: center; gap: 12px; }
 .nav__book,
 .nav__buy,
-.nav__shop {
+.nav__find {
   font-family: var(--sans); font-size: 0.76rem; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase;
   padding: 11px 20px; background: var(--cream); color: var(--black); white-space: nowrap;
@@ -137,13 +137,13 @@ section[id] { scroll-margin-top: 84px; }
 }
 .nav__book:hover,
 .nav__buy:hover,
-.nav__shop:hover { transform: translateY(-1px); background: var(--white); }
+.nav__find:hover { transform: translateY(-1px); background: var(--white); }
 .nav.scrolled .nav__book,
 .nav.scrolled .nav__buy,
-.nav.scrolled .nav__shop { background: var(--black); color: var(--cream); }
+.nav.scrolled .nav__find { background: var(--black); color: var(--cream); }
 .nav.scrolled .nav__book:hover,
 .nav.scrolled .nav__buy:hover,
-.nav.scrolled .nav__shop:hover { background: var(--near); }
+.nav.scrolled .nav__find:hover { background: var(--near); }
 
 .nav__toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px; }
 .nav__toggle span { width: 26px; height: 1.5px; background: currentColor; transition: 0.3s var(--ease); }
@@ -636,7 +636,7 @@ section[id] { scroll-margin-top: 84px; }
 
 /* Phones: Book Us is the headline button; Wholesale + Shop Pints move into the drawer. */
 @media (max-width: 760px) {
-  .nav__buy, .nav__shop { display: none; }
+  .nav__buy, .nav__find { display: none; }
   .nav__links .nav__links-extra { display: inline; }
 }
 @media (max-width: 400px) {
