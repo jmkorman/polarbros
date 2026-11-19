@@ -690,3 +690,57 @@ section[id] { scroll-margin-top: 84px; }
   .contact { padding-bottom: calc(clamp(64px, 8vw, 120px) + 76px); }
   .footer { padding-bottom: calc(clamp(48px, 6vw, 84px) + 64px); }
 }
+
+/* ---------- Promo pop-up (Thanksgiving 3-Pack; built by script.js) ---------- */
+.promo {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center; padding: 16px;
+  background: rgba(14, 13, 11, 0.62);
+  opacity: 0; transition: opacity 0.3s var(--ease);
+}
+.promo[hidden] { display: none; }
+.promo.is-open { opacity: 1; }
+.promo__card {
+  position: relative; width: min(420px, 100%); max-height: calc(100dvh - 32px);
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--cream-2); color: var(--ink); box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transform: translateY(14px); transition: transform 0.4s var(--ease);
+}
+.promo.is-open .promo__card { transform: none; }
+.promo__img {
+  display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+  flex: 0 1 auto; min-height: 0; background: #fff;
+}
+.promo__body { padding: 22px 26px 18px; text-align: center; flex: 0 0 auto; }
+.promo__title { font-family: var(--serif); font-weight: 700; font-size: 1.75rem; line-height: 1.1; margin: 0; }
+.promo__sub {
+  font-family: var(--sans); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.16em;
+  text-transform: uppercase; margin: 8px 0 12px;
+}
+.promo__text { font-size: 0.95rem; line-height: 1.5; color: var(--muted); margin: 0 0 18px; }
+.promo__btn {
+  display: block; font-family: var(--sans); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 20px;
+  background: var(--black); color: var(--cream);
+  transition: background 0.3s var(--ease), transform 0.25s var(--ease);
+}
+.promo__btn:hover { background: var(--near); transform: translateY(-1px); }
+.promo__no {
+  margin-top: 10px; background: none; border: 0; padding: 6px; cursor: pointer;
+  font-family: var(--sans); font-size: 0.82rem; color: var(--muted); text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.promo__no:hover { color: var(--ink); }
+.promo__x {
+  position: absolute; top: 10px; right: 10px; z-index: 1; width: 36px; height: 36px;
+  border: 0; background: var(--black); color: var(--cream); font-size: 1.4rem; line-height: 1; cursor: pointer;
+}
+.promo__x:hover { background: var(--near); }
+/* Short / phone screens: shrink the photo so the button stays on screen without scrolling. */
+@media (max-height: 820px) { .promo__img { max-height: 34vh; } }
+@media (max-width: 480px) {
+  .promo__body { padding: 18px 20px 12px; }
+  .promo__title { font-size: 1.5rem; }
+  .promo__img { max-height: 30vh; }
+}
+@media (prefers-reduced-motion: reduce) { .promo, .promo__card { transition: none; } }

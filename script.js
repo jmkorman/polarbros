@@ -346,3 +346,68 @@ if (mapEl && window.L && Array.isArray(window.POLAR_STOCKISTS)) {
   map.on('click', () => map.scrollWheelZoom.enable());
   map.on('mouseout', () => map.scrollWheelZoom.disable());
 }
+
+// --- Promo pop-up: Thanksgiving 3-Pack (auto-ends Thu 11/26/2026 11:59 PM Mountain) ---
+(() => {
+  const END = new Date('2026-11-26T23:59:59-07:00'); // MST
+  if (Date.now() > END.getTime()) return;
+  const KEY_SEEN = 'pb_promo_tg26_seen', KEY_DONE = 'pb_promo_tg26_done', DAY = 864e5;
+  const get = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const set = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+  if (get(KEY_DONE)) return;                                   // closed it or clicked through: never again
+  const seen = Number(get(KEY_SEEN));
+  if (seen && Date.now() - seen < DAY) return;                 // max once per 24 hours
+
+  const URL = 'https://order.polarbros.com/product/-/7OQYP225MJYMXMHPUKONB3E3';
+  const wrap = document.createElement('div');
+  wrap.className = 'promo';
+  wrap.hidden = true;
+  wrap.innerHTML = `
+    <div class="promo__card" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+      <button type="button" class="promo__x" aria-label="Close">&times;</button>
+      <img class="promo__img" src="images/promo-thanksgiving-3pack.jpg" alt="Three Polar Bros pints: Madagascar Vanilla, Pumpkin Pie and Peppermint Bark" width="720" height="720" />
+      <div class="promo__body">
+        <h2 class="promo__title" id="promoTitle">Thanksgiving 3-Pack</h2>
+        <p class="promo__sub">Any 3 pints for $24</p>
+        <p class="promo__text">Pumpkin Pie, S'mores, Peppermint Bark and Sweet Cream Squash Creme Brulee, or mix in any pint we have in stock. Pick up at our Lakewood trailer, Thursday to Sunday, 5 to 9pm.</p>
+        <a class="promo__btn" href="${URL}" target="_blank" rel="noopener">Order for Pickup</a>
+        <button type="button" class="promo__no">No thanks</button>
+      </div>
+    </div>`;
+  document.body.appendChild(wrap);
+
+  let shown = false, lastFocus = null;
+  const close = () => {
+    set(KEY_DONE, '1');
+    wrap.classList.remove('is-open');
+    setTimeout(() => { wrap.hidden = true; }, 300);
+    document.removeEventListener('keydown', onKey);
+    if (lastFocus) lastFocus.focus();
+  };
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  const show = () => {
+    if (shown) return;
+    shown = true;
+    window.removeEventListener('scroll', onScroll);
+    // Don't interrupt someone mid-way through the contact form or with the menu open.
+    if (document.activeElement && document.activeElement.closest('form')) return;
+    set(KEY_SEEN, String(Date.now()));
+    lastFocus = document.activeElement;
+    wrap.hidden = false;
+    requestAnimationFrame(() => wrap.classList.add('is-open'));
+    wrap.querySelector('.promo__btn').focus({ preventScroll: true });
+    document.addEventListener('keydown', onKey);
+  };
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    if (max > 0 && scrollY / max >= 0.4) show();
+  };
+
+  wrap.addEventListener('click', (e) => { if (e.target === wrap) close(); });      // click outside
+  wrap.querySelector('.promo__x').addEventListener('click', close);
+  wrap.querySelector('.promo__no').addEventListener('click', close);
+  wrap.querySelector('.promo__btn').addEventListener('click', close);
+
+  setTimeout(show, 3000);
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
